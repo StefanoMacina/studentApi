@@ -1,22 +1,34 @@
 package com.example.StudentsApi.Students;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.management.ConstructorParameters;
 import java.time.LocalDate;
+@Entity
+@Table
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer age;
     private LocalDate birthDate;
     private String email;
     private String name;
+    private Integer age;
 
-    public Student(Integer age, LocalDate birthDate, String email, String name) {
+    public Student(Integer age, LocalDate birthDate , String email, String name) {
         this.age = age;
-        this.birthDate = birthDate;
         this.email = email;
+        this.birthDate = birthDate;
         this.name = name;
+    }
+@Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
